@@ -5,10 +5,8 @@ export GIT_PS1_SHOWDIRTYSTATE=true
 export GIT_PS1_SHOWUNTRACKEDFILES=true
 export GIT_PS1_SHOWCOLORHINTS=true
 
-alias pr='cd /mnt/c/Projects'
-
-alias ebash='vim ~/.bash_aliases'
-alias rbash='. ~/.bashrc'
-
 export PS1='${debian_chroot:+($debian_chroot)}\[\033[38;5;32m\]\u:\[\033[38;5;34m\]\W\[\033[38;5;14m\]$(__git_ps1 " (%s)")\[\033[00m\]$ '
 
+alias pr='cd /mnt/c/Projects'
+alias ebash='vim ~/.bash_aliases'
+alias rbash='. ~/.bashrc'
