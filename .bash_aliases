@@ -10,7 +10,7 @@ export PS1='${debian_chroot:+($debian_chroot)}\[\033[38;5;32m\]\u:\[\033[38;5;34
 alias pr='cd /mnt/c/Projects'
 alias ebash='vim ~/.bash_aliases'
 alias rbash='. ~/.bashrc'
-
+alias gitca='git commit -a -m $1'
 ############
 #ssh agent
 env=~/.ssh/agent.env
