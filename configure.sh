@@ -10,4 +10,4 @@ curl -o ~/.dircolors https://raw.githubusercontent.com/seebi/dircolors-solarized
 
 cp .bash_aliases ~/
 cp .vimrc ~/
-
+cp .gitconfig ~/
