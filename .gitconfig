@@ -5,3 +5,8 @@
 	st = status
 	unstage = reset HEAD --
 	last = log -1 HEAD
+[user]
+	name = James Sturtevant
+	email = jsturtevant@gmail.com
+[push]
+	default = simple
