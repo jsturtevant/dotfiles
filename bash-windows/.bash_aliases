@@ -12,6 +12,11 @@ alias ebash='vim ~/.bash_aliases'
 alias rbash='. ~/.bashrc'
 alias gitca='git commit -a -m $1'
 alias ssh='lssh'
+alias docker='docker.exe'
+alias docker-compose='docker-compose.exe'
+
+PATH="$HOME/bin:$HOME/.local/bin:$PATH"
+PATH="$PATH:/mnt/c/Program\ Files/Docker/Docker/resources/bin"
 
 function lssh(){
 	############
