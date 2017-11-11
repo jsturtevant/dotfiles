@@ -11,9 +11,10 @@ alias pr='cd /mnt/c/Projects'
 alias ebash='vim ~/.bash_aliases'
 alias rbash='. ~/.bashrc'
 alias gitca='git commit -a -m $1'
-alias ssh='lssh'
+#alias ssh='lssh'
 alias docker='docker.exe'
 alias docker-compose='docker-compose.exe'
+alias projects='cd /mnt/c/projects/'
 
 PATH="$HOME/bin:$HOME/.local/bin:$PATH"
 PATH="$PATH:/mnt/c/Program\ Files/Docker/Docker/resources/bin"

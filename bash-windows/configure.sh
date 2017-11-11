@@ -8,6 +8,5 @@ git clone https://github.com/chriskempson/base16-vim.git
 #setup dotfiles
 curl -o ~/.dircolors https://raw.githubusercontent.com/seebi/dircolors-solarized/master/dircolors.256dark
 
-cp .bash_aliases ~/
-cp .vimrc ~/
-cp ../gitconfig ~/
+
+cp ../.gitconfig ~/
