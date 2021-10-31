@@ -5,7 +5,7 @@ winget install --id Microsoft.VisualStudioCode
 winget install --id Greenshot.Greenshot
 winget install --id Notepad++.Notepad++
                         
-wsl --install
+wsl --install -d Ubuntu-20.04
 
 # install https://starship.rs/
 mkdir -p ~/.local/share/fonts

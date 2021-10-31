@@ -1,5 +1,5 @@
 #!/bin/bash
 
-for f in ./*.doc; do
-  . ~/.aliases/$a
+for a in ./aliases/*; do
+  source $a
 done

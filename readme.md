@@ -14,4 +14,12 @@
 
 For use with any Linux box (included WSL2)  or [Codespaces](https://docs.github.com/en/codespaces/customizing-your-codespace/personalizing-codespaces-for-your-account)
 
-Todo (currently working on migrating the files from https://github.com/jsturtevant/devbox)
+Install everything (including packes and tools).  This takes a few minutes.
+
+`./install-all.sh`
+
+Install for codespaces (only aliases and custom shell):
+
+```
+./bootstrap.sh
+```
