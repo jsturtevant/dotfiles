@@ -1,4 +1,4 @@
-alias drmi='docker images | grep $1 | awk '{print $3}' | xargs docker rmi'
+alias drmi='docker images | grep $1 | awk {print $3} | xargs docker rmi'
 alias d="docker"
 
 # Remove all Docker containers
