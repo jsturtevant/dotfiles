@@ -1,0 +1,61 @@
+alias k="kubectl"
+alias kns="kubie ns"
+alias kap="kubectl get pods -A"
+alias kgp="kubectl get pods"
+alias kdp="kubectl describe pod"
+alias krmp="kubectl delete pod"
+alias kd="kubectl describe"
+alias kg="kubectl get"
+
+export PATH="${KREW_ROOT:-$HOME/.krew}/bin:$PATH"
+
+function wssh() {
+    local publicip=${1}
+    local windowsip=${2}
+    local keyfile=${3:-"~/.ssh/id_rsa"}
+    local sshuser=${4:-"azureuser"}
+
+    set -x
+    ssh -t -i "$keyfile" -o "ProxyCommand ssh -i $keyfile -W %h:%p $sshuser@$publicip" "$sshuser@$windowsip" "powershell.exe"
+}
+
+function wscpup() {
+    local publicip=${1}
+    local windowsip=${2}
+    local file=${3}
+    local location=${4:-"c:/"}
+    local keyfile=${5:-"~/.ssh/id_rsa"}
+    local sshuser=${6:-"azureuser"}
+
+    set -x
+    scp -i "$keyfile" -o "ProxyCommand ssh -i $keyfile -W %h:%p $sshuser@$publicip" $file "$sshuser@$windowsip:$location"
+}
+
+function wscpdown() {
+    local publicip=${1}
+    local windowsip=${2}
+    local file=${3}
+    local location=${4:-"./"}
+    local keyfile=${5:-"~/.ssh/id_rsa"}
+    local sshuser=${6:-"azureuser"}
+    local port=${7:-"22"}
+
+    set -x
+    scp -i "$keyfile" -o "ProxyCommand ssh -p $port -i $keyfile -W %h:%p $sshuser@$publicip" "$sshuser@$windowsip:$file" $location
+}
+
+# delete pods that match name {$1} in current namespace
+function krmps() {
+    set -x
+    local podname=${1}
+    local ns=$(kubectl config view --minify --output 'jsonpath={..namespace}'; echo)
+    echo "$podname $ns"
+    kubectl get pods -n $ns --no-headers=true |  awk '{print $1}' | grep $podname | xargs kubectl delete -n $ns pod
+} 
+
+# list pods on node
+# https://stackoverflow.com/a/62000785
+function ponnode(){
+    local nodename=${1}
+    kubectl get pods --all-namespaces -o wide --field-selector spec.nodeName=$nodename
+}

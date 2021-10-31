@@ -1,0 +1,28 @@
+function gclone() {
+    local repo=$1
+
+    pushd ~/projects
+    gh repo fork $1
+}
+
+function gupdate() {
+    local fromBranch=${1:-master}
+
+    branch=$(git symbolic-ref --short HEAD)
+    echo -n "Will rebase branch: '$branch' Proceed? [y/n]: "
+    read ans
+
+    if [[ $ans != "y" ]]; then
+        return
+    fi
+
+    echo "fetch upstream"
+    git fetch upstream
+    echo "rebase upstream '$fromBranch' to '$branch'"
+    git rebase upstream/$fromBranch
+    git status
+}
+
+function gpush() {
+    gh pr create 
+}

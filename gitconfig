@@ -5,6 +5,9 @@
 	st = status
 	unstage = reset HEAD --
 	last = log -1 HEAD
+	tree = log --all --decorate --oneline --graph
+	ignoreit = !git rm --cached -r -- $1 
+	howmany = !git rev-list $1.. --count
 [user]
 	name = James Sturtevant
 	email = jsturtevant@gmail.com
