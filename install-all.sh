@@ -2,4 +2,4 @@
 
 ./install-aliases.sh
 ./install-shell.sh
-find ./packages -exec ./{} \;
+./install-packages.sh
