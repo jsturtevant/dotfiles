@@ -3,7 +3,7 @@
 mkdir -p ~/.local/share/fonts
 pushd ~/.local/share/fonts/
 curl -fLo "FiraMonoNerdFontComplete.otf" \
-    https://github.com/ryanoasis/nerd-fonts/raw/master/patched-fonts/FiraMono/Regular/complete/Fira%20Mono%20Regular%20Nerd%20Font%20Complete%20Mono.otf
+    https://github.com/ryanoasis/nerd-fonts/raw/master/patched-fonts/FiraMono/Regular/complete/Fura%20Mono%20Regular%20Nerd%20Font%20Complete%20Mono.otf
 popd
 
 starship=$(mktemp)
