@@ -26,3 +26,8 @@ sudo groupadd docker
 sudo usermod -aG docker $USER
 sudo systemctl enable docker.service
 sudo systemctl enable containerd.service
+
+if ! sudo grep -q "[boot]" /etc/wsl.conf; then
+  echo "[boot]" | sudo tee -a /etc/wsl.conf
+  echo "command = \"service docker start\"" | sudo tee -a /etc/wsl.conf
+fi
