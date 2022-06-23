@@ -7,6 +7,10 @@ alias krmp="kubectl delete pod"
 alias kd="kubectl describe"
 alias kg="kubectl get"
 
+# set up completion
+source <(kubectl completion bash) 
+complete -F __start_kubectl k 
+
 export PATH="${KREW_ROOT:-$HOME/.krew}/bin:$PATH"
 
 function wssh() {

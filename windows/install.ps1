@@ -13,3 +13,10 @@ curl -fLo "~/.local/share/fonts/FiraMono Nerd Font Complete.otf" \
     https://github.com/ryanoasis/nerd-fonts/raw/master/patched-fonts/FiraMono/complete/FiraMono%20Nerd%20Font%20Complete.otf
 
 #$PROFILE
+
+# caps to ctrl
+curl.exe -LO https://download.sysinternals.com/files/Ctrl2Cap.zip
+Expand-Archive Ctrl2Cap.zip
+pushd Ctrl2Cap
+.ctrl2cap /install
+popd

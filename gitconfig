@@ -13,3 +13,5 @@
 	email = jsturtevant@gmail.com
 [push]
 	default = simple
+[core]
+	editor = vim
