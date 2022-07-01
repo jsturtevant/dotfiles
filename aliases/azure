@@ -1,7 +1,7 @@
-prefixesToDelete=("test" "kubetest" "capz-e2e" "kubernetes-" "win-template" "machinepool-win-template", "capz-conf")
+prefixesToDelete=("test" "kubetest" "capz-e2e" "kubernetes-" "win-template" "machinepool-win-template" "capz-conf" "gmsa-dc")
 
 function rgclean() {
-    echo here
+    echo "finding rgs for cleaning up"
     subid=$(az account show | jq -r .id)
     if [[ $subid != "" ]]; then
       echo "not valid sub for this command"
@@ -18,7 +18,13 @@ function rgclean() {
         groupsToDelete+=$1
     fi
 
-    echo $groupsToDelete
+    echo ""
+    # Iterate the loop to read and print each array element
+    for value in "${groupsToDelete[@]}"
+    do
+        echo $value
+    done
+    echo ""
     echo -n "Delete the previous resource groups [y/n]:"
     read ans
     if [[ $ans != "y" ]]; then
@@ -34,10 +40,16 @@ function rgclean() {
 function rglist(){
     groupsEligibleForDeletion=()
     for prefix in ${prefixesToDelete[@]}; do  
+        echo checking for $prefix
         groupsEligibleForDeletion+=($(az group list -o json --query "[?starts_with(name, '$prefix')].name" -o tsv))
     done
 
-    echo $groupsEligibleForDeletion
+    echo ""
+    echo "Groups eligible for deletion:"
+    for value in "${groupsEligibleForDeletion[@]}"
+    do
+        echo $value
+    done
 }
 
 function rgkeep() {
