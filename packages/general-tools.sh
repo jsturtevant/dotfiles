@@ -19,6 +19,9 @@ packages=(
   "net-tools"
 )
 
+# to get latest versions of git
+sudo add-apt-repository ppa:git-core/ppa
+
 sudo apt-get update
 sudo apt-get install -y ${packages[@]}
 

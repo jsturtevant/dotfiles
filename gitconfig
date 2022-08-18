@@ -1,17 +1,22 @@
 [alias]
 	co = checkout
 	br = branch
-	ci = commit
+	cm = commit -s -m
 	st = status
+	pfl = push --force-with-lease
+	can = commit --amend --no-edit -s
 	unstage = reset HEAD --
 	last = log -1 HEAD
 	tree = log --all --decorate --oneline --graph
 	ignoreit = !git rm --cached -r -- $1 
 	howmany = !git rev-list $1.. --count
+	shit = reset --soft HEAD~1
 [user]
 	name = James Sturtevant
-	email = jsturtevant@gmail.com
+	email = jstur@microsoft.com
 [push]
 	default = simple
+	autoSetupRemote = true
 [core]
 	editor = vim
+	autocrlf = true

@@ -17,7 +17,7 @@ function wssh() {
     local publicip=${1}
     local windowsip=${2}
     local keyfile=${3:-"~/.ssh/id_rsa"}
-    local sshuser=${4:-"azureuser"}
+    local sshuser=${4:-"capi"}
 
     set -x
     ssh -t -i "$keyfile" -o "ProxyCommand ssh -i $keyfile -W %h:%p $sshuser@$publicip" "$sshuser@$windowsip" "powershell.exe"
@@ -29,7 +29,7 @@ function wscpup() {
     local file=${3}
     local location=${4:-"c:/"}
     local keyfile=${5:-"~/.ssh/id_rsa"}
-    local sshuser=${6:-"azureuser"}
+    local sshuser=${6:-"capi"}
 
     set -x
     scp -i "$keyfile" -o "ProxyCommand ssh -i $keyfile -W %h:%p $sshuser@$publicip" $file "$sshuser@$windowsip:$location"

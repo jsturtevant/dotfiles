@@ -10,3 +10,5 @@ ln -sf ${BASEDIR}/bash_aliases ~/.bash_aliases
 ln -snf ${BASEDIR}/aliases ~/.aliases
 mkdir -p ~/.kube/
 ln -sf ${BASEDIR}/kubernetes/kubie.yaml ~/.kube/kubie.yaml
+mkdir -p ~/.config/
+ln -sf ${BASEDIR}/starship.toml  ~/.config/starship.toml
