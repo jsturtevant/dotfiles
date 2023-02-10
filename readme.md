@@ -9,6 +9,7 @@
 
 - https://github.com/microsoft/winget-cli
 - https://github.com/microsoft/winget-pkgs
+- https://docs.github.com/en/authentication/managing-commit-signature-verification/signing-commits
 
 ## Linux
 

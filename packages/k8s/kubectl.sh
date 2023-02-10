@@ -28,6 +28,8 @@ sudo apt-get install -y ${packages[@]}
 packages=(
   "neat"
   "node-shell"
+  "sniff"
+  "windows-debug"
 )
 
 kubectl krew install ${packages[@]}
