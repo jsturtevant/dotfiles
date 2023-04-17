@@ -9,9 +9,6 @@ winget install --id Starship.Starship
 wsl --install -d Ubuntu-20.04
 
 # install https://starship.rs/
-mkdir -p ~/.local/share/fonts
-curl -fLo "~/.local/share/fonts/FiraMono Nerd Font Complete.otf" \
-    https://github.com/ryanoasis/nerd-fonts/raw/master/patched-fonts/FiraMono/complete/FiraMono%20Nerd%20Font%20Complete.otf
 Add-Content -Path $PROFILE -Value "Invoke-Expression (&starship init powershell)"
 
 # caps to ctrl
@@ -23,3 +20,6 @@ popd
 
 # aliases
 Add-Content -Path $PROFILE -Value "set-alias -name k -value kubectl"
+
+#terminal 
+cp ./config/shortcuts.json C:\ProgramData\Microsoft\Windows Terminal\Fragments\jstur\shortcuts.json
