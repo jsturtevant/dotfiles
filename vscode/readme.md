@@ -1,0 +1,1 @@
+Example debug configurations for various projects

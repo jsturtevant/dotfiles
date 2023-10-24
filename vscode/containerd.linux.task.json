@@ -1,0 +1,18 @@
+{
+    "tasks": [
+    {
+        "label": "containerd",
+        "type": "shell",
+        "command": "go",
+        "args": [
+            "build",
+            "-gcflags=all=-N -l",
+            "-o",
+            "${workspaceFolder}/bin/containerd"
+        ],
+        "options": {
+            "cwd": "${workspaceFolder}/cmd/containerd"
+        },
+    }
+]
+}

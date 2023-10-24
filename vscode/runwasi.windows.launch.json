@@ -1,0 +1,48 @@
+{
+    // most of these use the pre-launch tasks in tasks.json
+    "version": "0.2.0",
+    "configurations": [
+        {
+            "name": "oci-tar-builder",
+            "type": "cppvsdbg",
+            "request": "launch",
+            "program": "${workspaceRoot}/target/debug/oci-tar-builder.exe",
+            "args": [
+                "--name", "wasi-demo-app-components",
+            ],
+            "stopAtEntry": false,
+            "preLaunchTask": "oci-tar-builder",
+            "requireExactSource": false
+        },
+        {
+            "name": "wasmtime",
+            "type": "cppvsdbg",
+            "request": "launch",
+            "program": "${workspaceRoot}/target/debug/containerd-shim-wasmtime-v1.exe",
+            "args": [
+                "-namespace", "default",
+                "-id", "1234",
+                "-address", "\\\\.\\pipe\\containerd-containerd",
+                "start"
+            ],
+            "stopAtEntry": false,
+            "cwd": "C:\\ProgramData\\containerd\\state\\io.containerd.runtime.v2.task\\default\\testwasm",
+            "environment": [ 
+                {
+                "name": "TTRPC_ADDRESS",
+                "value": "\\\\.\\pipe\\containerd-containerd.ttrpc"
+                }
+            ],
+            "preLaunchTask": "wasmtime",
+            "requireExactSource": false
+        },
+        {
+            // attach to the shim (see https://www.jamessturtevant.com/posts/attaching-a-debugger-to-windows-containerd-shim/)
+            "name": "wasmtime attach",
+            "type": "cppvsdbg",
+            "request": "attach",
+            "processId": "${command:pickProcess}",
+            "requireExactSource": false
+        }
+    ]
+}

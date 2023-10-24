@@ -1,0 +1,39 @@
+{
+    "version": "0.2.0",
+    "configurations": [
+        {
+            "type": "lldb",
+            "request": "launch",
+            "name": "Cargo test",
+            "cargo": {
+                "args": [
+                    "test",
+                    "--no-run",
+                    "--lib"
+                ]
+            },
+            "args": [],
+        },
+        {
+            // use to attach to shim
+            "type": "lldb",
+            "request": "attach",
+            "name": "attach",
+            "pid": "${command:pickMyProcess}"
+        },
+        {
+            "type": "lldb",
+            "request": "launch",
+            "name": "tar-builder",
+            "cargo": {
+                "args": [
+                    "build",
+                    "--bin",
+                    "oci-tar-builder",
+                ],
+            },
+            "args": ["--name", "wasi-demo-app",
+            "--repo", "ghcr.io/containerd/runwasi", "--tag", "latest", "--module", "./target/wasm32-wasi/debug/wasi-demo-app.wasm", "-o", "target/wasm32-wasi/debug/img-oci.tar"],
+        }
+    ]
+}

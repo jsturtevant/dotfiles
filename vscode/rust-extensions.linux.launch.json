@@ -1,0 +1,73 @@
+{
+    "version": "0.2.0",
+    "configurations": [
+        {
+            "type": "lldb",
+            "request": "launch",
+            "name": "skeleton shim",
+            "cargo": {
+                "args": [
+                    "build",
+                    "--example",
+                    "skeleton"
+                ]
+            },
+            "args": [
+                "-namespace",
+                "default",
+                "-id",
+                "1234",
+                "-address",
+                "/var/run/containerd/containerd.sock",
+                "-publish-binary",
+                "./bin/containerd",
+            ],
+            "env": {
+                "TTRPC_ADDRESS": "/var/run/containerd/containerd.sock.ttrpc"
+            },
+        },
+        {
+            // to run sudo launch sudo lldb-server platform --server --listen *:3000 
+            // cargo support: https://github.com/vadimcn/codelldb/blob/v1.10.0/MANUAL.md#cargo-support
+            // remote debugging support: https://github.com/vadimcn/codelldb/blob/v1.10.0/MANUAL.md#remote-debugging
+            "name": "Remote and sudo",
+            "type": "lldb",
+            "request": "launch",
+            "cargo": {
+                "args": [
+                    "test", "--no-run",  "--lib", "--package", "containerd-shim"
+                ]
+            },
+            "initCommands": [
+                "platform select remote-linux", // For example: 'remote-linux', 'remote-macosx', 'remote-android', etc.
+                "platform connect connect://localhost:3000",
+                //"settings set target.inherit-env false",
+            ],
+        },
+        {
+            "type": "lldb",
+            "request": "launch",
+            "name": "runc shim",
+            "cargo": {
+                "args": [
+                    "build",
+                    "--bin",
+                    "containerd-shim-runc-v2-rs"
+                ]
+            },
+            "args": [
+                "-namespace",
+                "default",
+                "-id",
+                "1234",
+                "-address",
+                "/var/run/containerd/containerd.sock",
+                "-publish-binary",
+                "./bin/containerd",
+            ],
+            "env": {
+                "TTRPC_ADDRESS": "/var/run/containerd/containerd.sock.ttrpc"
+            },
+        }
+    ]
+}

@@ -1,0 +1,29 @@
+{
+    "version": "0.2.0",
+    "configurations": [
+        {
+            // launches as root
+            "name": "containerd",
+            "type": "go",
+            "request": "launch",
+            "mode": "exec",
+            "program": "${workspaceFolder}/bin/containerd",
+            "args": [
+                "-c",
+                "${workspaceFolder}/bin/config.toml"
+            ],
+            "asRoot": true,
+            "console": "integratedTerminal",
+            // requires the launch.json to build binary wit debug symbols
+            "preLaunchTask": "containerd"
+        },
+        {
+            // use to attach to a shim
+            "name": "Attach to Process",
+            "type": "go",
+            "request": "attach",
+            "mode": "local",
+            "processId":"${command:pickProcess}"
+        }
+    ]
+}
