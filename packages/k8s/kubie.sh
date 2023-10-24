@@ -1,6 +1,6 @@
 #!/bin/bash
 
-version="v0.16.0"
+version="v0.22.0"
 kubie=$(mktemp)
 curl -Lo $kubie https://github.com/sbstp/kubie/releases/download/$version/kubie-linux-amd64
 chmod +x $kubie
