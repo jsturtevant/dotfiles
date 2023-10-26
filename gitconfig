@@ -14,15 +14,10 @@
 [user]
 	name = James Sturtevant
 	email = jsturtevant@gmail.com
-	signingkey = <todo>
 [push]
 	default = simple
 	autoSetupRemote = true
 [core]
 	editor = vim
-[gpg]
-	format = ssh
-[commit]
-	gpgsign = true
 [include]
 	path = .signing.gitconfig
