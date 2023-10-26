@@ -19,6 +19,8 @@ Install everything (including packes and tools).  This takes a few minutes.
 
 `./install-all.sh`
 
+## Codespaces 
+
 Install for codespaces (only aliases and custom shell):
 
 ```
