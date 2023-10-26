@@ -15,6 +15,8 @@ ln -sf ${BASEDIR}/starship.toml  ~/.config/starship.toml
 
 if $CODESPACES; then
     # put empty file in place so use codespaces signing
+    # info on signing in codespaces: https://docs.github.com/en/codespaces/managing-your-codespaces/managing-gpg-verification-for-github-codespaces
+    # note that signing is done with GitHub <noreply@github.com>. see https://github.com/orgs/community/discussions/45065
     touch ~/.signing.gitconfig
 else
     ln -sf ${BASEDIR}/signing.gitconfig ~/.signing.gitconfig

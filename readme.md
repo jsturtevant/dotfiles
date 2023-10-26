@@ -21,8 +21,10 @@ Install everything (including packes and tools).  This takes a few minutes.
 
 ## Codespaces 
 
-Install for codespaces (only aliases and custom shell):
+Install for [codespaces](https://docs.github.com/en/codespaces/customizing-your-codespace/personalizing-github-codespaces-for-your-account#dotfiles) (only aliases and custom shell):
 
 ```
 ./bootstrap.sh
 ```
+
+See https://docs.github.com/en/codespaces/troubleshooting/troubleshooting-personalization-for-codespaces#troubleshooting-dotfiles for trouble shooting
