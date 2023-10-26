@@ -3,7 +3,7 @@ alias edev="code ~/.devbox/"
 alias etmux="vim ~/.tmux.conf"
 alias evim="vim ~/.vimrc"
 alias ezsh="vim ~/.zshrc"
-alias cpinstall='_install(){ /workspaces/.codespaces/.persistedshare/dotfiles/packages/"$1";}; _install'
+alias cs-install='_install(){ /workspaces/.codespaces/.persistedshare/dotfiles/packages/"$1";}; _install'
 
 alias ll='ls -alF'
 alias la='ls -A'
