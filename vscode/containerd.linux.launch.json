@@ -2,6 +2,21 @@
     "version": "0.2.0",
     "configurations": [
         {
+            "name": "ctr",
+            "type": "go",
+            "request": "launch",
+            "mode": "exec",
+            "program": "${workspaceFolder}/bin/ctr",
+            "args": [
+                "i",
+                "pull",
+                "docker.io/jsturtevant/spin-wasm-shim:latest-2.0"
+            ],
+            "asRoot": true,
+            "console": "integratedTerminal",
+            "preLaunchTask": "ctr"
+        },
+        {
             // launches as root
             "name": "containerd",
             "type": "go",
