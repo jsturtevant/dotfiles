@@ -1,0 +1,16 @@
+{
+    "version": "0.2.0",
+    "configurations": [
+        {
+            // requires tasks.json hack to create executable
+            "name": "Cargo Test",
+            "type": "cppvsdbg",
+            "request": "launch",
+            "program": "${workspaceRoot}/target/debug/deps/codegen-current.exe",
+            "args": [
+                "same_names2", "--", "--exact"
+            ],
+            "preLaunchTask": "Build"
+        }
+    ]
+}

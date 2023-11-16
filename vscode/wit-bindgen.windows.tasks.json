@@ -1,0 +1,41 @@
+{
+	"version": "2.0.0",
+	"tasks": [
+        {
+            "type": "shell",
+            "command": "rm",
+            "args": [
+                "target/debug/deps/codegen-*"
+            ],
+            "label": "rm old"
+        },
+		{
+			"type": "cargo",
+			"command": "test",
+			"args": [
+				"-p", "wit-bindgen-csharp",
+				" --no-run"
+			],
+			"label": "cargo test"	
+		},
+        {
+			"type": "shell",
+			"command": "mv",
+			"args": [
+				"-force", "target/debug/deps/codegen-*.exe", "target/debug/deps/codegen-current.exe",
+			],
+			"label": "make current",		
+		},
+        {
+			// hack to enable debugging of test exe on windows since windows extension doesn't support cargo test well.
+            "label": "Build",
+            "dependsOrder": "sequence",
+            "dependsOn": [
+                "rm old",
+                "cargo test",
+                "make current"
+            ]
+        }
+
+	]
+}
