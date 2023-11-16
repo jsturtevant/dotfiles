@@ -5,6 +5,7 @@ BASEDIR="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
 ln -sf ${BASEDIR}/vimrc ~/.vimrc
 ln -sf ${BASEDIR}/tmux.conf ~/.tmux.conf
 ln -sf ${BASEDIR}/gitconfig ~/.gitconfig
+cp ${BASEDIR}/gitconfig ~/.signing.gitconfig # requires update to fill in path to ssh key
 ln -sf ${BASEDIR}/dircolors ~/.dircolors
 ln -sf ${BASEDIR}/bash_aliases ~/.bash_aliases
 ln -snf ${BASEDIR}/aliases ~/.aliases
