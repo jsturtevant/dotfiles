@@ -5,6 +5,8 @@ winget install --id Microsoft.VisualStudioCode
 winget install --id Greenshot.Greenshot
 winget install --id Notepad++.Notepad++
 winget install --id Starship.Starship
+winget install --id Rustlang.Rustup
+winget install --id GitHub.cli
                         
 wsl --install -d Ubuntu-20.04
 
