@@ -7,6 +7,7 @@ winget install --id Notepad++.Notepad++
 winget install --id Starship.Starship
 winget install --id Rustlang.Rustup
 winget install --id GitHub.cli
+winget install --id GoLang.Go
                         
 wsl --install -d Ubuntu-20.04
 
@@ -25,3 +26,6 @@ Add-Content -Path $PROFILE -Value "set-alias -name k -value kubectl"
 
 #terminal 
 cp ./config/shortcuts.json C:\ProgramData\Microsoft\Windows Terminal\Fragments\jstur\shortcuts.json
+
+#choco
+# choco install make
