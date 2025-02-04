@@ -1,0 +1,24 @@
+{
+    "version": "0.2.0",
+    "configurations": [
+        {
+            "type": "lldb",
+            "request": "launch",
+            "name": "Cargo test",
+            "cargo": {
+                "args": [
+                    "test",
+                    "-p",
+                    "wit-parser",
+                    // filter down the test binary produced to use integration tests not unit
+                    "--test",
+                    "all",
+                    "--no-run",
+                ]
+            },
+            // specific test name
+            "args": ["multi-package-features"], 
+            "cwd": "${workspaceFolder}/crates/wit-parser"
+        },
+    ]
+}
