@@ -8,8 +8,8 @@ if grep -q microsoft /proc/sys/kernel/osrelease; then
   alias e.="explorer.exe"
   alias wprojects='cd /mnt/c/Users/jstur/projects/' 
   # Don't 'nice' background jobs (https://github.com/Microsoft/BashOnWindows/issues/1838)
-  unsetopt BG_NICE
+  # unsetopt BG_NICE
 
   # copy the wsl config if doesn't exist.  need to reboot after first copy to apply changes
-  cp -n ~/.devbox/linux/wsl.conf /etc/
+  # cp -n ~/.devbox/linux/wsl.conf /etc/
 fi

@@ -8,7 +8,7 @@ alias cs-install='_install(){ /workspaces/.codespaces/.persistedshare/dotfiles/p
 alias ll='ls -alF'
 alias la='ls -A'
 alias l='ls -CF'
-alias ff='find * -type f | fzf'
+alias ff='find * -type f | fzf > selected'
 
 alias gitshit="git reset --soft HEAD~1"
 alias tunzip="tar xf $1"
@@ -30,6 +30,3 @@ function checksum {
     echo "$given $fileToCheck" | sha256sum -c
 }
 
-# fzf bindings
-source /usr/share/doc/fzf/examples/key-bindings.bash
-source /usr/share/doc/fzf/examples/completion.bash

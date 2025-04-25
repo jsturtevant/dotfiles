@@ -14,7 +14,6 @@ packages=(
   "vim"
   "zip"
   "unzip"
-  "fzf"
   "silversearcher-ag"
   "net-tools"
 )
