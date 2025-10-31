@@ -1,6 +1,5 @@
 ## Windows
 
-1. [Install winget](https://docs.microsoft.com/en-us/windows/package-manager/winget/#install-winget)
 1. Run `winget install --id git.git` and clone this repo
 1. `Set-ExecutionPolicy -ExecutionPolicy RemoteSigned -Scope CurrentUser`
 1. Run the [install file](windows/install.ps1) in [Windows](windows) folder

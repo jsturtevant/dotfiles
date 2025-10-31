@@ -5,27 +5,29 @@ winget install --id Microsoft.VisualStudioCode
 winget install --id Greenshot.Greenshot
 winget install --id Notepad++.Notepad++
 winget install --id Starship.Starship
+winget install --id Microsoft.PowerShell
 winget install --id Rustlang.Rustup
 winget install --id GitHub.cli
 winget install --id GoLang.Go
-                        
-wsl --install -d Ubuntu-20.04
+winget install --id Microsoft.Sysinternals.Ctrl2Cap
 
 # install https://starship.rs/
-Add-Content -Path $PROFILE -Value "Invoke-Expression (&starship init powershell)"
+# Ensure profile file exists (it's a file path, not a directory)
+if (-not (Test-Path -Path $PROFILE)) {
+	New-Item -Path $PROFILE -ItemType File -Force | Out-Null
+}
 
-# caps to ctrl
-curl.exe -LO https://download.sysinternals.com/files/Ctrl2Cap.zip
-Expand-Archive Ctrl2Cap.zip
-pushd Ctrl2Cap
-.ctrl2cap /install
-popd
+$starshipInit = 'Invoke-Expression (&starship init powershell)'
+$profileContent = if (Test-Path -Path $PROFILE) { Get-Content -Path $PROFILE -Raw } else { '' }
+if ($profileContent -notmatch [regex]::Escape($starshipInit)) {
+    Add-Content -Path $PROFILE -Value $starshipInit
+}
 
 # aliases
-Add-Content -Path $PROFILE -Value "set-alias -name k -value kubectl"
+$kubectlAlias = 'Set-Alias -Name k -Value kubectl'
+if ($profileContent -notmatch [regex]::Escape($kubectlAlias)) {
+    Add-Content -Path $PROFILE -Value $kubectlAlias
+}
 
-#terminal 
-cp ./config/shortcuts.json C:\ProgramData\Microsoft\Windows Terminal\Fragments\jstur\shortcuts.json
-
-#choco
-# choco install make
+#terminal
+#figure out to update settings for now see config/shortcuts.json
