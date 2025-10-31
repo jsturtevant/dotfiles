@@ -1,6 +1,6 @@
 #!/bin/bash
 
-version="1.24.2"
+version="1.24.3"
 go=$(mktemp)
 curl -Lo $go https://golang.org/dl/go$version.linux-amd64.tar.gz
 sudo rm -rf /usr/local/go 
