@@ -1,8 +1,13 @@
-function gclone() {
+function ghfork() {
     local repo=$1
+    local repo_name=$(echo $repo | cut -d'/' -f2)
+    local folder_name="${repo_name}-project"
 
     pushd ~/projects
-    gh repo fork $1
+    mkdir $folder_name
+    cd $folder_name
+    gh repo fork $repo
+    cd "$repo_name" || return
 }
 
 function gupdate() {
@@ -26,3 +31,56 @@ function gupdate() {
 function gpush() {
     gh pr create 
 }
+
+wt() {
+    local dir=$(git worktree list | fzf --height=50% --reverse \
+        --preview 'git -C {1} log --oneline -10' \
+        --preview-window=right:35% | awk '{print $1}')
+    [[ -n "$dir" ]] && cd "$dir"
+}
+
+wtd() {
+   local current=$(pwd)
+    local dir=$(git worktree list | grep -v "^$current " | fzf --height=50% --reverse \
+        --header="Select worktree to FORCE DELETE" | awk '{print $1}')
+    
+    if [[ -n "$dir" ]]; then
+        echo "Force removing worktree: $dir"
+        read -p "Are you sure? (y/N) " confirm
+        [[ "$confirm" =~ ^[Yy]$ ]] && git worktree remove --force "$dir"
+    fi
+}
+
+wtpr() {
+    local pr=$(gh pr list --state open --json number,title,headRefName,author \
+        --template '{{range .}}{{.number}}|{{.headRefName}}|{{.author.login}}: {{.title}}{{"\n"}}{{end}}' | \
+        column -t -s '|' | \
+        fzf --height=50% --reverse --header="Select PR to checkout as worktree" \
+        --preview 'gh pr view $(echo {} | awk "{print \$1}") --comments=false')
+    
+    if [[ -n "$pr" ]]; then
+        local pr_number=$(echo "$pr" | awk '{print $1}')
+        local branch=$(echo "$pr" | awk '{print $2}')
+        local worktree_dir="../$branch"
+        
+        echo "Creating worktree for PR #$pr_number at $worktree_dir"
+        gh pr checkout "$pr_number" --detach 2>/dev/null  # ensures branch is fetched
+        git worktree add "$worktree_dir" "$branch" 2>/dev/null || \
+            git worktree add "$worktree_dir" "origin/$branch"
+        cd "$worktree_dir"
+    fi
+}
+
+wtprup() {
+    local pr_number=$(gh pr view --json number --jq '.number' 2>/dev/null)
+    
+    if [[ -n "$pr_number" ]]; then
+        echo "Updating from PR #$pr_number"
+        gh pr checkout "$pr_number" --force
+    else
+        echo "No PR associated with current branch"
+        git pull
+    fi
+}
+
+

@@ -11,6 +11,8 @@
 	ignoreit = !git rm --cached -r -- $1 
 	howmany = !git rev-list $1.. --count
 	shit = reset --soft HEAD~1
+	wta = "!f() { git worktree add -b \"$1\" \"../$1\"; }; f"
+	fixup = "!git log --oneline -n 50 | fzf --height=50% --reverse --preview 'git show --color=always {1}' | awk '{print $1}' | xargs -I {} git commit -S -s --fixup={}"
 [user]
 	name = James Sturtevant
 	email = jsturtevant@gmail.com

@@ -10,6 +10,15 @@ winget install --id Rustlang.Rustup
 winget install --id GitHub.cli
 winget install --id GoLang.Go
 winget install --id Microsoft.Sysinternals.Ctrl2Cap
+winget install --id LLVM.LLVM
+winget install --id Microsoft.VisualStudio.2022.BuildTools --override `
+    "--wait --quiet `
+    --add Microsoft.VisualStudio.Workload.VCTools `
+    --add Microsoft.VisualStudio.Component.VC.Tools.x86.x64 `
+    --add Microsoft.VisualStudio.Component.VC.Llvm.Clang `
+    --add Microsoft.VisualStudio.Component.VC.Llvm.ClangToolset `
+    --add Microsoft.VisualStudio.Component.Windows11SDK.26100 `
+    --installPath C:\BuildTools"
 
 # install https://starship.rs/
 # Ensure profile file exists (it's a file path, not a directory)
@@ -27,6 +36,12 @@ if ($profileContent -notmatch [regex]::Escape($starshipInit)) {
 $kubectlAlias = 'Set-Alias -Name k -Value kubectl'
 if ($profileContent -notmatch [regex]::Escape($kubectlAlias)) {
     Add-Content -Path $PROFILE -Value $kubectlAlias
+}
+
+$vsDevShell = 'C:\BuildTools\Common7\Tools\Launch-VsDevShell.ps1'
+$vsDevShellCommand = ". `$vsDevShell"
+if ($profileContent -notmatch [regex]::Escape($vsDevShellCommand)) {
+    Add-Content -Path $PROFILE -Value $vsDevShellCommand
 }
 
 #terminal
